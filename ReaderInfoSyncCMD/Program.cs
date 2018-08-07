@@ -250,6 +250,22 @@ namespace ReaderInfoSyncCMD
                             StringBuilder sb = new StringBuilder("delete from T_SM_Reader;");
                             foreach (DataRow item in dt.Rows)
                             {
+                                ////排除掉2015年之前的读者数据
+                                //try
+                                //{
+                                //    string yearString = item["CardNo"].ToString().Trim().Substring(0, 4);
+                                //    int year = int.Parse(yearString);
+                                //    if (year < 2015)
+                                //    {
+                                //        continue;
+                                //    }
+                                //}
+                                //catch (Exception ex)
+                                //{
+                                //    SeatManage.SeatManageComm.WriteLog.Write(ex.ToString());
+                                //    continue;
+                                //}
+
                                 string sql = "insert into T_SM_Reader(CardNo,CardID,ReaderName,ReaderTypeName,ReaderDeptName) values('" + item["CardNo"].ToString().Trim() + "','" + item["CardID"].ToString().Trim() + "','" + item["ReaderName"].ToString().Trim() + "','" + item["ReaderTypeName"].ToString().Trim() + "','" + item["ReaderDeptName"].ToString().Trim() + "');";
                                 sb.Append(sql);
                             }

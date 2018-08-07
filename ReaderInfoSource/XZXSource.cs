@@ -19,9 +19,13 @@ namespace ReaderInfoSource
             {
                 ulong uJnl = 1;
                 UInt16 sSysCode = UInt16.Parse(config.XzxSetting.SysCode);
+              //  SeatManage.SeatManageComm.WriteLog.Write(string.Format("sSysCode：" + sSysCode));
                 UInt16 sTerminalNo = UInt16.Parse(config.XzxSetting.TerminalNo);
+               // SeatManage.SeatManageComm.WriteLog.Write(string.Format("sTerminalNo：" + sTerminalNo));
                 string ipip = config.XzxSetting.Ip;
+              //  SeatManage.SeatManageComm.WriteLog.Write(string.Format("ipip：" + ipip));
                 short ipport = short.Parse(config.XzxSetting.Port);
+             //   SeatManage.SeatManageComm.WriteLog.Write(string.Format("ipport：" + ipport));
                 bool bOffline = false;
                 bool b =  XZX_API.TA_Init(ipip, ipport, sSysCode, sTerminalNo, &bOffline, &uJnl);
                 SeatManage.SeatManageComm.WriteLog.Write(string.Format("第三方初始化结果：" + b));
